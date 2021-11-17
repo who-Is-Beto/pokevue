@@ -2,7 +2,7 @@
   <div class="pokemon-container fade-in">
     <!-- <img :src="imgSource" class="hidden-pokemon" alt="pokemon" />
     <img :src="imgSource" alt="pokemon" /> -->
-    {{ imgSource.Pokemon }}
+    {{ pokemon.imgSource }}
   </div>
 </template>
 
@@ -10,12 +10,15 @@
 import { ref } from "vue";
 export default {
   name: "PokemonPicture",
+  props: {
+    pokemon: {
+      type: String,
+      required: true,
+    },
+  },
   setup(props: any) {
-    const imgSource = ref(props);
-    console.log(imgSource);
-    return {
-      imgSource,
-    };
+    const imgSource = ref(props.pokemon);
+    console.log(imgSource.value);
   },
 };
 </script>
